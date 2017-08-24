@@ -4,6 +4,7 @@ namespace Erichard\DoctrineJsonTranslation\DBAL;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use Erichard\DoctrineJsonTranslation\TranslatedField;
 
 class TranslatedType extends Type
 {
@@ -40,7 +41,11 @@ class TranslatedType extends Type
             return null;
         }
 
-        $json = json_encode($value->all());
+        if ($value instanceof TranslatedField) {
+            $value = $value->all();
+        }
+
+        $json = json_encode($value);
 
         return $json;
     }
