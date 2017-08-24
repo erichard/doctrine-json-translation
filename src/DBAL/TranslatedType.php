@@ -3,8 +3,9 @@
 namespace Erichard\DoctrineJsonTranslation;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
-class TranslatedType extends JsonbArrayType
+class TranslatedType extends Type
 {
     /**
      * {@inheritdoc}
