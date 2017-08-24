@@ -1,0 +1,15 @@
+{
+    "name": "erichard/doctrine-json-translation",
+    "description": "Store your translations in JSON and use it with Doctrine",
+    "type": "library",
+    "require": {
+        "doctrine/dbal": "^2.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erwan Richard",
+            "email": "erwan.richard@lephare.com"
+        }
+    ]
+}

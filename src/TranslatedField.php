@@ -1,0 +1,89 @@
+<?php
+
+namespace Erichard\DoctrineJsonTranslation;
+
+use InvalidArgumentException;
+use JsonSerializable;
+use ArrayAccess;
+
+class TranslatedField implements JsonSerializable, ArrayAccess
+{
+    protected $array;
+
+    public function __construct($array)
+    {
+        $this->array = $array;
+        $this->defaultLocale = \Locale::getDefault();
+    }
+
+    public function __toString()
+    {
+        try {
+            return $this->get();
+        } catch (\Exception $e) {
+            return 'Exception: '. $e->getMessage();
+        }
+    }
+
+    public function __get($locale)
+    {
+        return $this->get($locale);
+    }
+
+    public function __set($locale, $value)
+    {
+        return $this->array[$locale] = $value;
+    }
+
+    public function get($locale = null)
+    {
+        if (null === $locale) {
+            $locale = $this->defaultLocale;
+        }
+
+        if (!isset($this->array[$locale])) {
+            throw new InvalidArgumentException('Locale '.$locale.' is null or undefined in this field');
+        }
+
+        return $this->array[$locale];
+    }
+
+    public function has($locale = null)
+    {
+        if (null === $locale) {
+            $locale = $this->defaultLocale;
+        }
+
+        return array_key_exists($locale, $this->array);
+    }
+
+    public function all()
+    {
+        return $this->array;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->__toString();
+    }
+
+    public function offsetExists($offset)
+    {
+        return isset($this->array[$offset]);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->array[$offset] = $value;
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->array[$offset];
+    }
+
+    public function offsetUnset($offset)
+    {
+        unset($this->array[$offset]);
+    }
+}
