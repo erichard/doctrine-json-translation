@@ -1,6 +1,6 @@
 <?php
 
-namespace Erichard\DoctrineJsonTranslation;
+namespace Erichard\DoctrineJsonTranslation\DBAL;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
