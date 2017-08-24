@@ -5,6 +5,11 @@
     "require": {
         "doctrine/dbal": "^2.6"
     },
+    "autoload": {
+        "psr-4": {
+            "Erichard\\DoctrineJsonTranslation\\": "src"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
