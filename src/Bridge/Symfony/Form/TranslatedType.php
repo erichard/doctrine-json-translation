@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace Erichard\DoctrineJsonTranslation\Bridge\Symfony\Form;
 
 use Erichard\DoctrineJsonTranslation\TranslatedField;
 use Symfony\Component\Form\AbstractType;
