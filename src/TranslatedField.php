@@ -9,6 +9,7 @@ use ArrayAccess;
 class TranslatedField implements JsonSerializable, ArrayAccess
 {
     protected $array;
+    protected $defaultLocale;
 
     public function __construct($array)
     {
