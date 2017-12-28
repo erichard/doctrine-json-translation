@@ -24,7 +24,7 @@ class TranslatedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         foreach ($this->availableLocales as $locale) {
-            $builder->add($locale, $options['entry_type'], $options['entry_options']);
+            $builder->add($locale, $options['entry_type'], array_merge(['label' => false], $options['entry_options']));
         }
 
         $builder->addViewTransformer(new CallbackTransformer(
@@ -53,7 +53,6 @@ class TranslatedType extends AbstractType
         $resolver->setDefaults([
             'entry_type' => TextType::class,
             'entry_options' => [],
-            'label' => false,
         ]);
     }
 }
