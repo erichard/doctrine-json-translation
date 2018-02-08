@@ -21,7 +21,7 @@ class TranslatedType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

@@ -22,7 +22,7 @@ class TranslatedField implements JsonSerializable, ArrayAccess
         try {
             return $this->get();
         } catch (\Exception $e) {
-            return 'Exception: '. $e->getMessage();
+            return 'Exception: '.$e->getMessage();
         }
     }
 
