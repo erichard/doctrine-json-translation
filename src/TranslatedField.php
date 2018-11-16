@@ -49,6 +49,15 @@ class TranslatedField implements JsonSerializable, ArrayAccess
         return $this->array[$locale];
     }
 
+    public function find($locale = null)
+    {
+        if (!$this->has($locale)) {
+            return null;
+        }
+
+        return $this->array[$locale];
+    }
+
     public function has($locale = null)
     {
         if (null === $locale) {
