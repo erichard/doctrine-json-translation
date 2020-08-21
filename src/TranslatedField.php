@@ -20,7 +20,7 @@ class TranslatedField implements JsonSerializable, ArrayAccess
     public function __toString()
     {
         try {
-            return $this->get();
+            return $this->get() ?? '';
         } catch (\Exception $e) {
             return '';
         }
