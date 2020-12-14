@@ -20,7 +20,7 @@ class TranslatedField implements JsonSerializable, ArrayAccess
     public function __toString()
     {
         try {
-            return $this->get();
+            return $this->get() ?? '';
         } catch (\Exception $e) {
             return '';
         }
@@ -42,11 +42,7 @@ class TranslatedField implements JsonSerializable, ArrayAccess
             $locale = $this->defaultLocale;
         }
 
-        if (!isset($this->array[$locale])) {
-            throw new InvalidArgumentException('Locale '.$locale.' is null or undefined in this field');
-        }
-
-        return $this->array[$locale];
+        return $this->array[$locale] ?? null;
     }
 
     public function find($locale = null)
@@ -89,7 +85,7 @@ class TranslatedField implements JsonSerializable, ArrayAccess
 
     public function offsetGet($offset)
     {
-        return $this->array[$offset];
+        return $this->array[$offset] ?? null;
     }
 
     public function offsetUnset($offset)
